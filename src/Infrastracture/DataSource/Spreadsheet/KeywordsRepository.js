@@ -1,6 +1,7 @@
 class KeywordsRepository {
   constructor(){
-    this.db = new DB('keywords');
+    const ssId = PropertiesService.getScriptProperties().getProperty('spreadsheet-id');
+    this.db = SpreadsheetDB.create(ssId, 'keywords');
   }
 
   find(){
