@@ -68,36 +68,24 @@ class JobSite {
   }
 
   /**
-   * 案件を取得する
-   * 
-   * @param {Map<number,Job>} jobs - 未登録の案件番号のみ案件情報の配列
-   * @return {Map<number,Job>} 案件配列
+   * 案件の全ての情報を取得する
+   *
+   * @param {Job} job - 案件
+   * @return {Job} 案件
    */
-  getJobs(jobs){
-    
-    for(const job of jobs.values()){
-      console.log('変換前');
-      console.log(job);
-
-      const jobNumber = job.getNumber();
-      const jobDetailContent = this.getJobDetailContent(jobNumber);
-
-      const jobTitle = this.getJobTitle(jobDetailContent);
-      job.setTitle(jobTitle);
-      
-      const jobDetail = this.getJobDetail(jobDetailContent);
-      job.setDetail(jobDetail);
-
-      const jobDeadline = this.getJobDeadline(jobDetailContent);
-      job.setDeadline(jobDeadline);
-
-      job.setDataComplete();
-
-      console.log('変換後');
-      console.log(job);
-    }
-
-    return jobs;
+  getAllInfo(job){
+    const jobNumber = job.getNumber();
+    const jobDetailContent = this.getJobDetailContent(jobNumber);
+    const jobTitle = this.getJobTitle(jobDetailContent);
+	job.setTitle(jobTitle);
+	  
+	const jobDetail = this.getJobDetail(jobDetailContent);
+	job.setDetail(jobDetail);
+	
+	const jobDeadline = this.getJobDeadline(jobDetailContent);
+	job.setDeadline(jobDeadline);
+	job.gotAllInfo();
+	return job;
   }
 
   /**
