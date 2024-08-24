@@ -9,9 +9,9 @@ class Job{
    * @param {'ランサーズ' | 'クラウドワークス'} site - 掲載サイト
    * @param {bool} isSuggest - 提案可否
    * @param {string} suggestion - 提案内容
-   * @param {bool} isGetDetail - 詳細を取得しているかのフラグ。取得している場合はtrue,まだの場合はfalse
+   * @param {bool} isGetAllInfo - 全ての情報を取得しているかのフラグ。取得している場合はtrue,まだの場合はfalse
    */
-  constructor(id = 0, title, number, detail, deadline, site, isSuggest = true, suggestion = "", isGetDetail){
+  constructor(id = 0, title, number, detail, deadline, site, isSuggest = true, suggestion = "", isGetAllInfo){
 
     /** 
      * @private
@@ -65,7 +65,7 @@ class Job{
      * @private
      * @type {bool}
      */
-    this.isGetDetail = isGetDetail
+    this.isGetAllInfo = isGetAllInfo;
   }
 
   getTitle(){
@@ -100,8 +100,8 @@ class Job{
     return this.suggestion;
   }
 
-  getIsGetDetail(){
-    return this.isGetDetail;
+  getIsGetAllInfo(){
+    return this.isGetAllInfo;
   }
 
   getUrl(){
@@ -152,9 +152,9 @@ class Job{
   }
 
   /**
-   * 詳細を取得済みにする
+   * 全ての情報を取得した
    */
-  setDataComplete(){
-    this.isGetDetail = true;
+  completedGetAllInfo(){
+    this.isGetAllInfo = true;
   }
 }
