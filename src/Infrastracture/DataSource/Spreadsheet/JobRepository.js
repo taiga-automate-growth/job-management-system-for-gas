@@ -69,4 +69,36 @@ class JobRepository extends IJobRepository{
       return 1;
     }
   }
+  
+  /**
+   * 全ての情報を取得してない案件のみを取得する
+   * @return {Map<number,Job>} jobs - 案件配列
+   */
+  findNotGetAllInfo(){
+	const conditions = [{
+			  column: 'is_get_all_info',
+			  operand: '=',
+			  values: [false]
+	}];
+	const jobDatas = this.dao.get(conditions);
+	const jobs = jobDatas.reduce((jobs, jobData, index) => {
+
+      const id = jobData[0];
+      const number = jobData[1];
+      const title = jobData[2];
+      const detail = jobData[3];
+      const deadline = jobData[4];
+      const site = jobData[5];
+      const isSuggest = jobData[6];
+      const suggestion = jobData[7];
+      const isGetDetail = jobData[8];
+
+      const job = new Job(id,title,number,detail,deadline,site,isSuggest,suggestion,isGetDetail);
+      jobs.set(index, job);
+      return jobs;
+
+    }, new Map());
+
+    return jobs;
+  }
 }
