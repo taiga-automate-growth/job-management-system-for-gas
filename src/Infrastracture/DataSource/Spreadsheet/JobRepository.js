@@ -47,7 +47,7 @@ class JobRepository extends IJobRepository{
       const isSuggest = job.getIsSuggest();
       const suggestion = job.getSuggestion();
       const isGetDetail = job.getIsGetDetail();
-      const saveData = [id,title,number,detail,deadline,site,isSuggest,suggestion,isGetDetail];
+      const saveData = [id,number,title,detail,deadline,site,isSuggest,suggestion,isGetDetail];
       saveDatas.push(saveData);
     }
 
