@@ -67,10 +67,11 @@ class Line{
         messagesList.push([template]);
       }
     }
+    
+    messagesList.forEach(messages => {
+      const userId = 'U75636e7098f9ec20dc1d6f3c353625c7';
+      const send = this.apiClient.sendPush(userId, messages);
+      console.log(send);
+    });
   }
-  
-  messagesList.forEach(messages => {
-    const userId = 'U75636e7098f9ec20dc1d6f3c353625c7';
-    const send = this.apiClient.sendPush(userId, messages);
-  });
 }
