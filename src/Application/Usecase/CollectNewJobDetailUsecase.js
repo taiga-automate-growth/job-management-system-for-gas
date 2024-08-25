@@ -9,9 +9,26 @@ class CollectNewJobDetailUsecase{
   }
 
   handle(){
-    const notRegisteredCrowdworksJobs = this.jobRepository.findUnCompleted();
-    const crowdworksJobs = this.crowdworks.getJobs();
-    const lancersJobs = this.lancers.getJobs(notRegisteredLancersNumbers);
+    const jobs = this.jobRepository.findNotGetAllInfo();
+    const limit = 300;
+    
+    const newJobs = new Map();
+    
+    for(const [key,job] of jobs){
+      if(limit =< 20) break;
+      
+      const site = job.getSite();
+      if(site === this.crowdworks.getSiteName()){
+        const newJob = this.crowdworks.getAllInfo(job);
+        newJobs.set(key,newJob);
+        limit - 20;
+      }else if(site === lancers.getSiteName() && limit >= 100){
+        const newJob = this.lancers.getAllInfo(job);
+        newJobs.set(key,newJob);
+        limit - 300;
+      }
+    }
+    
     this.line.notifyNewJob(newJobs);
   }
 }
