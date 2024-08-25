@@ -15,7 +15,7 @@ class CollectNewJobDetailUsecase{
     const newJobs = new Map();
     
     for(const [key,job] of jobs){
-      if(limit =< 20) break;
+      if(limit <= 20) break;
       
       const site = job.getSite();
       if(site === this.crowdworks.getSiteName()){
