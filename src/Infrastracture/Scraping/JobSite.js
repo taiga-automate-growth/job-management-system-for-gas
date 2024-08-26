@@ -21,17 +21,21 @@ class JobSite {
    */
   getAllInfo(job){
     const jobNumber = job.getNumber();
-    const jobDetailContent = this.getJobDetailContent(jobNumber);
-    const jobTitle = this.getJobTitle(jobDetailContent);
-	job.setTitle(jobTitle);
-	  
-	const jobDetail = this.getJobDetail(jobDetailContent);
-	job.setDetail(jobDetail);
-	
-	const jobDeadline = this.getJobDeadline(jobDetailContent);
-	job.setDeadline(jobDeadline);
-	job.gotAllInfo();
-	return job;
+    try {
+      const jobDetailContent = this.getJobDetailContent(jobNumber);
+      const jobTitle = this.getJobTitle(jobDetailContent);
+      job.setTitle(jobTitle);
+        
+      const jobDetail = this.getJobDetail(jobDetailContent);
+      job.setDetail(jobDetail);
+      
+      const jobDeadline = this.getJobDeadline(jobDetailContent);
+      job.setDeadline(jobDeadline);
+      job.gotAllInfo();
+      return job;
+    } catch (error) {
+      throw error;   
+    }
   }
 
   /**
@@ -40,6 +44,13 @@ class JobSite {
   getSiteName(){
     return this.siteName;
   }
+
+  /**
+   * 案件詳細ページのHTMLコンテンツを取得する
+   * 
+   * @return {string} 案件詳細ページのHTMLコンテンツ
+   */
+  getJobDetailContent(){}
 
   /**
    * 案件のタイトルを取得する
