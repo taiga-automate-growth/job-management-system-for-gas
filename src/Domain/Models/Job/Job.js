@@ -154,7 +154,7 @@ class Job{
   /**
    * 全ての情報を取得した
    */
-  completedGetAllInfo(){
+  gotAllInfo(){
     this.isGetAllInfo = true;
   }
 }
