@@ -18,14 +18,19 @@ class CollectNewJobDetailUsecase{
       if(limit <= 20) break;
       
       const site = job.getSite();
-      if(site === this.crowdworks.getSiteName()){
-        const newJob = this.crowdworks.getAllInfo(job);
-        newJobs.set(key,newJob);
-        limit - 20;
-      }else if(site === lancers.getSiteName() && limit >= 100){
-        const newJob = this.lancers.getAllInfo(job);
-        newJobs.set(key,newJob);
-        limit - 300;
+      try {
+        if(site === this.crowdworks.getSiteName()){
+          const newJob = this.crowdworks.getAllInfo(job);
+          newJobs.set(key,newJob);
+          limit - 20;
+        }else if(site === this.lancers.getSiteName() && limit >= 100){
+          const newJob = this.lancers.getAllInfo(job);
+          newJobs.set(key,newJob);
+          limit - 300;
+          break;
+        }
+      } catch (error) {
+          
       }
     }
     
