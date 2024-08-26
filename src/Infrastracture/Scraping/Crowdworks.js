@@ -46,7 +46,7 @@ class Crowdworks extends JobSite {
   getJobTitle(jobDetailContent){
     const startString = '<h1>';
     const endString = '<span class="subtitle">';
-    const jobTitle = HTMLPerser.byText(jobDetailContent, startString, endString);
+    const jobTitle = HtmlPerser.byText(jobDetailContent, startString, endString);
     if(jobTitle.length > 0) {
       return jobTitle[0];
     }
@@ -61,7 +61,7 @@ class Crowdworks extends JobSite {
   getJobDetail(jobDetailContent){
     const startString = '<td class="confirm_outside_link">';
     const endString = '</td>';
-    const jobDetail = HTMLPerser.byText(jobDetailContent, startString, endString);
+    const jobDetail = HtmlPerser.byText(jobDetailContent, startString, endString);
     if(jobDetail.length > 0){
       return jobDetail[0];
     }
@@ -75,7 +75,7 @@ class Crowdworks extends JobSite {
    */
   getDeadline(jobDetailContent){
     const regex = /<div>応募期限<\/div>\s*<\/th>\s*<td>(\d{4}年\d{2}月\d{2}日)<\/td>/g;
-    const deadline = HTMLPerser.byRegex(jobDetailContent, regex);
+    const deadline = HtmlPerser.byRegex(jobDetailContent, regex);
     if(deadline.length > 0){
       return deadline[0];
     }

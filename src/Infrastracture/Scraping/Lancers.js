@@ -40,7 +40,7 @@ class Lancers extends JobSite {
   getJobTitle(jobDetailContent){
     const startString = '<title>';
     const endString = '</title>';
-    const jobTitle = HTMLPerser.byText(jobDetailContent, startString, endString);
+    const jobTitle = HtmlPerser.byText(jobDetailContent, startString, endString);
     if(jobTitle.length > 0) {
       return jobTitle[0];
     }
@@ -55,7 +55,7 @@ class Lancers extends JobSite {
   getJobDetail(jobDetailContent){
     const startString = ' <dd class="c-definition-list__description">';
     const endString = '</dd>';
-    const jobDetail = HTMLPerser.byText(jobDetailContent, startString, endString);
+    const jobDetail = HtmlPerser.byText(jobDetailContent, startString, endString);
     if(jobDetail.length > 0){
       return jobDetail[2];
     }
