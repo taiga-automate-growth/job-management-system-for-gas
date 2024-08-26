@@ -18,18 +18,18 @@
       {
         "userSymbol": "LineMessage",
         "libraryId": "1T42K6_IV6qXjG3PN7J_BmD0cFnPz3oSxtmlAgNVOJ7P1PSaebzB11gsf",
-        "version": "12"
+        "version": "13"
       },
       {
         "userSymbol": "HtmlParser",
-        "version": "0",
         "libraryId": "1LsiH4SXdahFHOKQjsTXagVtgzl9woaDbrhnWqRnD0vX1T0rsBFdUbJ8U",
+        "version": "0",
         "developmentMode": true
       },
       {
         "userSymbol": "SpreadsheetDB",
-        "version": "0",
         "libraryId": "1_Q83qyASWwOQ3jQq7DemsVZ21ve54WizXe1Ir_z5E3zt6IdJBKTplhst",
+        "version": "0",
         "developmentMode": true
       }
     ]
