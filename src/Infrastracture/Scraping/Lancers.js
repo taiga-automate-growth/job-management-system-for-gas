@@ -24,12 +24,12 @@ class Lancers extends JobSite {
     const url = this.url + '/work/detail/' + jobNumber;
     // const phantomJsCloud = PhantomJsCloud.create('ak-de1bk-a75m1-c7shb-jaqb3-s23yw');
     // const content = phantomJsCloud.getContent(url);
-    const content = UrlFetchApp.fetch(url, {
+    const response = UrlFetchApp.fetch(url, {
       method: 'GET',
       'muteHttpExceptions' : true
     })
-    .getContentText();
     if(content.getResponseCode() !== 200) throw new HtmlContentNotFoundException(`ランサーズに詳細ページが存在しません。\n案件番号${jobNumber}`);
+    const content = response.getContentText();
     return content;
   }
 

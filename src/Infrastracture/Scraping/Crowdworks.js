@@ -29,12 +29,12 @@ class Crowdworks extends JobSite {
   getJobDetailContent(jobNumber){
     const url = this.url + '/public/jobs/' + jobNumber;
 
-    const content = UrlFetchApp.fetch(url, {
+    const response = UrlFetchApp.fetch(url, {
       method: 'GET',
       'muteHttpExceptions' : true
-    })
-    .getContentText();
+    });
     if(content.getResponseCode() !== 200) throw new HtmlContentNotFoundException(`クラウドワークスに詳細ページが存在しません。\n案件番号${jobNumber}`);
+    const content = response.getContentText();
     Utilities.sleep(this.crawlDelay * 1000);
     return content;    
   }
