@@ -1,6 +1,6 @@
 class Crowdworks extends JobSite {
   constructor(){
-    super('クラウドワークス', 'https://crowdworks.jp', 2);
+    super('クラウドワークス', 'https://crowdworks.jp', 10);
   }
 
   /**

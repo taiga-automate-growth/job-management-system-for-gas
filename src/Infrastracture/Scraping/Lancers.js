@@ -1,6 +1,6 @@
 class Lancers extends JobSite {
   constructor(){
-    super('ランサーズ', 'https://www.lancers.jp', 2);
+    super('ランサーズ', 'https://www.lancers.jp', 10);
   }
 
   /**
