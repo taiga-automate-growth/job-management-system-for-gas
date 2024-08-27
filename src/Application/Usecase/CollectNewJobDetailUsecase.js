@@ -10,7 +10,7 @@ class CollectNewJobDetailUsecase{
 
   handle(){
     const jobs = this.jobRepository.findNotGetAllInfo();
-    const limit = 300;
+    let limit = 300;
     
     const newJobs = new Map();
     
@@ -22,18 +22,19 @@ class CollectNewJobDetailUsecase{
         if(site === this.crowdworks.getSiteName()){
           const newJob = this.crowdworks.getAllInfo(job);
           newJobs.set(key,newJob);
-          limit - 20;
+          limit = limit - 30;
         }else if(site === this.lancers.getSiteName() && limit >= 100){
           const newJob = this.lancers.getAllInfo(job);
           newJobs.set(key,newJob);
-          limit - 300;
+          limit = limit - 300;
           break;
         }
       } catch (error) {
-          
+        console.log('エラーです');
+        console.log(error)
       }
     }
-    
+    this.jobRepository.saveAll(newJobs);
     this.line.notifyNewJob(newJobs);
   }
 }
