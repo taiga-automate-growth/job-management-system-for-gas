@@ -11,7 +11,6 @@ class Lancers extends JobSite {
    */
   getJobListContent(keyword){
     const url = this.url + '/work/search?open=1&show_description=1&budget_from=&budget_to=&keyword=' + keyword;
-    console.log(url);
     const content = UrlFetchApp.fetch(url, {
       method: 'GET',
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
@@ -28,7 +27,8 @@ class Lancers extends JobSite {
       method: 'GET',
       'muteHttpExceptions' : true
     })
-    if(content.getResponseCode() !== 200) throw new HtmlContentNotFoundException(`ランサーズに詳細ページが存在しません。\n案件番号${jobNumber}`);
+    Utilities.sleep(this.crawlDelay * 1000);
+    if(response.getResponseCode() !== 200) throw new HtmlContentNotFoundException(`ランサーズに詳細ページが存在しません。\n案件番号${jobNumber}`);
     const content = response.getContentText();
     return content;
   }
@@ -69,7 +69,7 @@ class Lancers extends JobSite {
    * @param {string} jobDetailContent - 案件詳細HTMLコンテンツ
    * @return {string} 応募期限
    */
-  getDeadline(jobDetailContent){
+  getJobDeadline(jobDetailContent){
     return '';
   }
 
