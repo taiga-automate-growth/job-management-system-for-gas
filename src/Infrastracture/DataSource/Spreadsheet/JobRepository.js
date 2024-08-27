@@ -36,7 +36,16 @@ class JobRepository extends IJobRepository{
    * @param {Map<number,Job>} jobs - 案件配列
    */
   saveAll(jobs){
-    const saveDatas = [];
+    const registerdDatas = this.dao.get();
+
+    const saveDatas = registerdDatas.reduce((prev,registerdData) => {
+      const id = parseInt(registerdData[0]);
+      prev[id] = registerdData;
+      return prev;
+    },{});
+
+    console.log(saveDatas);
+
     for(const job of jobs.values()){
       const id = job.getId();
       const title = job.getTitle();
@@ -46,12 +55,14 @@ class JobRepository extends IJobRepository{
       const site = job.getSite();
       const isSuggest = job.getIsSuggest();
       const suggestion = job.getSuggestion();
-      const isGetDetail = job.getIsGetDetail();
+      const isGetDetail = job.getIsGetAllInfo();
       const saveData = [id,number,title,detail,deadline,site,isSuggest,suggestion,isGetDetail];
-      saveDatas.push(saveData);
+      saveDatas[id] = saveData;
     }
 
-    this.dao.set(saveDatas);
+    const data = Object.values(saveDatas);
+    this.dao.deleteAll();
+    this.dao.set(data);
   }
 
   /**
@@ -62,8 +73,6 @@ class JobRepository extends IJobRepository{
     try{
       const lastData = this.dao.getLastData();
       let lastId = lastData[0];
-      console.log(lastId);
-      console.log(typeof(lastId));
       return lastId + 1;
     }catch(e){
       return 1;
