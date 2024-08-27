@@ -105,14 +105,23 @@ class Job{
   }
 
   getUrl(){
-    console.log(this.site);
     if(this.site === 'ランサーズ'){
       return `https://www.lancers.jp/work/detail/${this.number}`;
     }
     if(this.site === 'クラウドワークス'){
-      return `https://crowdworks.jp/public/jobs/${this.number};`
+      return `https://crowdworks.jp/deeplink/job_offers/${this.number};`
     }
     throw new Error('クラウドワークスとランサーズ以外のサイトには対応していません');
+  }
+
+  isCrowdWorks(){
+    if(this.site === 'クラウドワークス') return true;
+    return false;
+  }
+
+  isLancers(){
+    if(this.site === 'ランサーズ') return true;
+    return false;
   }
 
   /**
