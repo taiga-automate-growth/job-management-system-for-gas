@@ -33,9 +33,9 @@ class Crowdworks extends JobSite {
       method: 'GET',
       'muteHttpExceptions' : true
     });
-    if(content.getResponseCode() !== 200) throw new HtmlContentNotFoundException(`クラウドワークスに詳細ページが存在しません。\n案件番号${jobNumber}`);
-    const content = response.getContentText();
+    if(response.getResponseCode() !== 200) throw new HtmlContentNotFoundException(`クラウドワークスに詳細ページが存在しません。\n案件番号${jobNumber}`);
     Utilities.sleep(this.crawlDelay * 1000);
+    const content = response.getContentText();
     return content;    
   }
 
@@ -75,7 +75,7 @@ class Crowdworks extends JobSite {
    * @param {string} jobDetailContent - 案件詳細HTMLコンテンツ
    * @return {string} 応募期限
    */
-  getDeadline(jobDetailContent){
+  getJobDeadline(jobDetailContent){
     const regex = /<div>応募期限<\/div>\s*<\/th>\s*<td>(\d{4}年\d{2}月\d{2}日)<\/td>/g;
     const deadline = HtmlParser.byRegex(jobDetailContent, regex);
     if(deadline.length > 0){
