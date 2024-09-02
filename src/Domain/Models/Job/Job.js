@@ -166,4 +166,11 @@ class Job{
   gotAllInfo(){
     this.isGetAllInfo = true;
   }
+
+  /**
+   * 提案を拒否する
+   */
+  cancelSuggestion(){
+    this.isSuggest = false;
+  }
 }
