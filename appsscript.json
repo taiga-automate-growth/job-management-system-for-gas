@@ -13,12 +13,12 @@
       {
         "userSymbol": "LineBot",
         "libraryId": "1oePw_FOmC39iZwbVp988ISagmg2S7Kk80VpY7EDaIAsqfbiqLwghV1YD",
-        "version": "33"
+        "version": "40"
       },
       {
         "userSymbol": "LineMessage",
         "libraryId": "1T42K6_IV6qXjG3PN7J_BmD0cFnPz3oSxtmlAgNVOJ7P1PSaebzB11gsf",
-        "version": "16"
+        "version": "18"
       },
       {
         "userSymbol": "HtmlParser",
@@ -31,6 +31,11 @@
         "libraryId": "1_Q83qyASWwOQ3jQq7DemsVZ21ve54WizXe1Ir_z5E3zt6IdJBKTplhst",
         "version": "0",
         "developmentMode": true
+      },
+      {
+        "userSymbol": "Gemini",
+        "libraryId": "1Su782KbJ1Ffg1t727zA7703s16wWnTPwo9ovg5txo_pQWlKBsWrQ-b9j",
+        "version":"19"
       }
     ]
   }
