@@ -33,6 +33,34 @@ class JobRepository extends IJobRepository{
   }
 
   /**
+   * IDで取得する
+   * 
+   * @param {string} id - 求人ID
+   */
+  findById(id){
+    const condition = [{
+      column: 'job_id',
+      operand: '=',
+      values: [id]
+    }];
+
+    const jobDatas = this.dao.get(condition);
+    const jobData = jobDatas[0];
+    const jobId = jobData[0];
+    const number = jobData[1];
+    const title = jobData[2];
+    const detail = jobData[3];
+    const deadline = jobData[4];
+    const site = jobData[5];
+    const isSuggest = jobData[6];
+    const suggestion = jobData[7];
+    const isGetDetail = jobData[8];
+
+    const job = new Job(jobId,title,number,detail,deadline,site,isSuggest,suggestion,isGetDetail);
+    return job;
+  }
+
+  /**
    * @param {Map<number,Job>} jobs - 案件配列
    */
   saveAll(jobs){
