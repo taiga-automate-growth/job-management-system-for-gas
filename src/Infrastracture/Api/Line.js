@@ -34,7 +34,7 @@ class Line{
       generateSuggestionAction.setLabel('提案文を生成する');
       column.addAction(generateSuggestionAction);
 
-      const notSuggestAction = LineMessage.createPostbackAction(`action=notSuggest&id=${id}`);
+      const notSuggestAction = LineMessage.createPostbackAction(`action=cancelSuggestion&id=${id}`);
       notSuggestAction.setLabel('提案しない');
       column.addAction(notSuggestAction);
 
@@ -92,5 +92,23 @@ class Line{
       const send = this.apiClient.sendPush(userId, messages);
       console.log(send);
     });
+  }
+
+  /**
+   * 提案文を送信する
+   */
+  sendSuggestion(suggestion,replyToken){
+    const message = LineMessage.createTextMessage(suggestion);
+    this.apiClient.reply(replyToken,[message]);
+  }
+
+  /**
+   * 提案キャンセル成功を報告する
+   */
+  canceledSuggestionComplete(job,replyToken){
+    const title = job.getTitle();
+    const text = `以下案件の提案をキャンセルしました\n${title}`;
+    const message = LineMessage.createTextMessage(text);
+    this.apiClient.reply(replyToken,[message]);
   }
 }
