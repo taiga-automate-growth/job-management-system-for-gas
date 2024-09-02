@@ -11,6 +11,16 @@ function doPost(e){
 
         if(postbackData.action === 'generateSuggestion'){
             new GenerateSuggestionUsecase().handle(postbackData,replyToken);
+        }else if(postbackData.action === 'cancelSuggestion'){
+            new CancelSuggestionUsecase().handle(postbackData,replyToken);
         }
     }
+}
+
+function collectNewJob(){
+    new CollectNewJobUsecase().handle();
+}
+
+function collectNewJobDetail(){
+    new CollectNewJobDetailUsecase().handle();
 }
