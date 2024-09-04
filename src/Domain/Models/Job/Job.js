@@ -7,7 +7,7 @@ class Job{
    * @param {string} detail - 案件詳細
    * @param {string} deadline - 応募期限
    * @param {'ランサーズ' | 'クラウドワークス'} site - 掲載サイト
-   * @param {bool} isSuggest - 提案可否
+   * @param {'提案前','提案しない','提案中','契約済み','不採用'} isSuggest - 提案可否
    * @param {string} suggestion - 提案内容
    * @param {bool} isGetAllInfo - 全ての情報を取得しているかのフラグ。取得している場合はtrue,まだの場合はfalse
    */
@@ -161,6 +161,15 @@ class Job{
   }
 
   /**
+   * 提案文を設定する
+   * 
+   * @param {string} suggestion - 提案文
+   */
+  setSuggestion(suggestion){
+    this.suggestion = suggestion;
+  }
+
+  /**
    * 全ての情報を取得した
    */
   gotAllInfo(){
@@ -171,6 +180,6 @@ class Job{
    * 提案を拒否する
    */
   cancelSuggestion(){
-    this.isSuggest = false;
+    this.isSuggest = '提案しない';
   }
 }
