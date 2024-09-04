@@ -87,7 +87,7 @@ class Lancers extends JobSite {
     const numbers = HtmlParser.byRegex(jobListContent, regex);
 
     const jobs = numbers.reduce((jobs, jobNumber,index) => {
-      const job = new Job(null, '', jobNumber, '', '', this.siteName, true, '', false);
+      const job = new Job(null, '', jobNumber, '', '', this.siteName, '提案前', '', false);
       jobs.set(index, job);
       return jobs;
     },new Map());
