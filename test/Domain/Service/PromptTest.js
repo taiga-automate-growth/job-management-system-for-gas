@@ -1,7 +1,7 @@
 function testPromptGenerate(){
     const promptGenerator = new Prompt();
     const jobRepository = new JobRepository();
-    const job = jobRepository.findById(1);
+    const job = jobRepository.findById(59);
     console.log(job);
     const achievementsRepository = new AchievementsRepository();
     const achievements = achievementsRepository.find();
