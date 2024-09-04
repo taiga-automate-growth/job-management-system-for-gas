@@ -32,6 +32,10 @@ class CollectNewJobDetailUsecase{
       } catch (error) {
         console.log('エラーです');
         console.log(error)
+        if(error instanceof HtmlContentNotFoundException){
+          job.gotAllInfo();
+          job.cancelSuggestion();
+        }
       }
     }
     this.jobRepository.saveAll(newJobs);
