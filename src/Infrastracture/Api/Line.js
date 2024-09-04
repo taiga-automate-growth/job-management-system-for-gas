@@ -13,8 +13,9 @@ class Line{
     
     for(const job of jobs.values()){
       const title = job.getTitle();
-      const deadline = `締切：${job.getDeadline()}`;
-      const column = LineMessage.createColumn(deadline);
+      let text = `ID:${job.getId()}`;
+      text += `締切：${job.getDeadline()}`;
+      const column = LineMessage.createColumn(text);
       column.setTitle(title);
 
       if(job.isCrowdWorks()){
