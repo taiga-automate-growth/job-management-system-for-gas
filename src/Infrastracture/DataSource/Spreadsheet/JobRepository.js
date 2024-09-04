@@ -2,6 +2,7 @@ class JobRepository extends IJobRepository{
   constructor(){
     super();
     const ssId = PropertiesService.getScriptProperties().getProperty('spreadsheet-id');
+    this.logger = DocumentLogger.create('1-8H6oA7bl8hVlGbhhlJvRyBqHFRPjgSk_RuW91P3UHg');
     this.dao = SpreadsheetDB.create(ssId, 'jobs');
   }
 
@@ -38,6 +39,7 @@ class JobRepository extends IJobRepository{
    * @param {string} id - 求人ID
    */
   findById(id){
+    this.logger.log(id);
     const condition = [{
       column: 'job_id',
       operand: '=',
@@ -45,6 +47,7 @@ class JobRepository extends IJobRepository{
     }];
 
     const jobDatas = this.dao.get(condition);
+    this.logger.log(jobDatas);
     const jobData = jobDatas[0];
     const jobId = jobData[0];
     const number = jobData[1];
