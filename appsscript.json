@@ -13,7 +13,7 @@
       {
         "userSymbol": "LineBot",
         "libraryId": "1oePw_FOmC39iZwbVp988ISagmg2S7Kk80VpY7EDaIAsqfbiqLwghV1YD",
-        "version": "40"
+        "version": "42"
       },
       {
         "userSymbol": "LineMessage",
@@ -35,8 +35,18 @@
       {
         "userSymbol": "Gemini",
         "libraryId": "1Su782KbJ1Ffg1t727zA7703s16wWnTPwo9ovg5txo_pQWlKBsWrQ-b9j",
-        "version":"19"
+        "version": "19"
+      },
+      {
+        "userSymbol": "DocumentLogger",
+        "libraryId": "1wlwc4pV_a_VlCIJ6jhBGCcIZtJ-SzermhsKnE_IqvNd8gLKbG0Iux9Gz",
+        "version": "3",
+        "developmentMode": false
       }
     ]
+  },
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE_ANONYMOUS"
   }
 }
